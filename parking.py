@@ -92,3 +92,34 @@ class ParkingLot():
                     print(str(i) + "\t\t" + car.reg_number + "\t\t" + car.color)
         else:
             print("Parking lot is empty")
+
+    def reg_for_cars_parking(self, color):
+        ''' Get registeration for cars with specific colour '''
+
+        if (self.max_slot == 0):
+            print("Parking lot is under construction")
+        elif color in self.col_reg:
+            print(", ".join(self.col_reg[color]))
+        else:
+            print("Not found")
+
+    def slot_for_color_car_parking(self, color):
+        ''' Get Slots for cars with specific colour '''
+
+        if (self.max_slot == 0):
+            print("Parking lot is under construction")
+        elif color in self.col_reg:
+            reg_num_list = self.col_reg[color]
+            print(", ".join(list(map(str,sorted({self.reg_slot[i] for i in reg_num_list})))))
+        else:
+            print("Not found")
+
+    def slot_for_reg_car_parking(self, reg_num):
+        ''' Get Slots for cars with specific registeration number '''
+
+        if (self.max_slot == 0):
+            print("Parking lot is under construction")
+        elif reg_num in self.reg_slot:
+            print(self.reg_slot[reg_num])
+        else:
+            print("Not found")

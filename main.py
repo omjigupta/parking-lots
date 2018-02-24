@@ -24,6 +24,21 @@ def check_command_type(line, parking_lot):
                 parking_lot.status_parking()
             except Exception as e:
                 print("arguments with status command are not proper")
+        elif command[0] == "registration_numbers_for_cars_with_colour":
+            try:
+                parking_lot.reg_for_cars_parking(command[1])
+            except Exception as e:
+                print("arguments with find_reg_by_color command are not proper")
+        elif command[0] == "slot_numbers_for_cars_with_colour":
+            try:
+                parking_lot.slot_for_color_car_parking(command[1])
+            except Exception as e:
+                print("arguments with find_slot_by_color command are not proper")
+        elif command[0] == "slot_number_for_registration_number":
+            try:
+                parking_lot.slot_for_reg_car_parking(command[1])
+            except Exception as e:
+                print("arguments with find_slot_by_reg command are not proper")
         else:
             print(" Wrong Command!!! Please check it.")
     except Exception as e:
