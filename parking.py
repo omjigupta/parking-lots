@@ -57,3 +57,38 @@ class ParkingLot():
                 self.col_reg[color] = [str(reg_number)]
             print("Allocated slot number:",slot)
             self.avail_slots.pop(0)
+
+    def leave_parking(self, dslot):
+        ''' Empty specified parking lot '''
+        if (self.max_slot == 0):
+            print("Parking lot is under construction")
+        elif dslot < 0  or dslot > self.max_slot:
+            print("Parking slot number is wrong")
+        elif (len(self.car_slot) > 0):
+            lcar = self.car_slot.get(dslot, False)
+            if lcar:
+                self.car_slot.pop(dslot)
+                self.reg_slot.pop(lcar.reg_number)
+                colorlist = self.col_reg[lcar.color]
+                if lcar.reg_number in colorlist:
+                    colorlist.remove(lcar.reg_number)
+                self.avail_slots.append(dslot)
+                print("Slot number " + str(dslot) + " is free")
+            else:
+                print("No car parked!!!!")
+        else:
+            print("Parking lot is empty")
+
+    def status_parking(self):
+        ''' Print Car details parked inside parking lot '''
+
+        if (self.max_slot == 0):
+            print("Parking lot is under construction")
+        elif (len(self.car_slot) > 0):
+            print("Slot No.\tRegistration No.\tColor")
+            for i in range(1, self.max_slot+1):
+                if self.car_slot.get(i, None):
+                    car = self.car_slot.get(i, None)
+                    print(str(i) + "\t\t" + car.reg_number + "\t\t" + car.color)
+        else:
+            print("Parking lot is empty")

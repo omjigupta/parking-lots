@@ -14,6 +14,16 @@ def check_command_type(line, parking_lot):
                 parking_lot.do_parking(command[1], command[2])
             except Exception as e:
                 print("arguments with park command are not proper")
+        elif command[0] == "leave":
+            try:
+                parking_lot.leave_parking(int(command[1]))
+            except Exception as e:
+                print("arguments with park command are not proper")
+        elif command[0] == "status":
+            try:
+                parking_lot.status_parking()
+            except Exception as e:
+                print("arguments with status command are not proper")
         else:
             print(" Wrong Command!!! Please check it.")
     except Exception as e:
