@@ -9,6 +9,11 @@ def check_command_type(line, parking_lot):
         command = line.split()
         if command[0] == "create_parking_lot":
             parking_lot.create_parking(command[1])
+        elif command[0] == "park":
+            try:
+                parking_lot.do_parking(command[1], command[2])
+            except Exception as e:
+                print("arguments with park command are not proper")
         else:
             print(" Wrong Command!!! Please check it.")
     except Exception as e:
